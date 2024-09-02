@@ -1,6 +1,7 @@
 package controller;
 
 import javafx.event.ActionEvent;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
@@ -10,6 +11,17 @@ public class RegistrationFormController {
     public TextField txtMobile;
     public TextField txtConfirmPassword;
     public TextField txtPassword;
+    public Label lblpassword1;
+    public Label lblpassword2;
+
+
+
+    public void initialize()
+    {
+        lblpassword1.setVisible(false);
+        lblpassword2.setVisible(false);
+    }
+
 
     public void btnSignUp(ActionEvent actionEvent) throws IOException {
 
@@ -28,14 +40,18 @@ public class RegistrationFormController {
 
         if(newPassword.equals(confirmPassword))
         {
-            System.out.println("I was read matched");
             setBorderColor("transparent");
+            lblpassword1.setVisible(false);
+            lblpassword2.setVisible(false);
+            txtPassword.requestFocus();
         }
 
         else
         {
-            System.out.println("I was read red");
             setBorderColor("red");
+            lblpassword1.setVisible(true);
+            lblpassword2.setVisible(true);
+            txtPassword.requestFocus();
         }
     }
 
